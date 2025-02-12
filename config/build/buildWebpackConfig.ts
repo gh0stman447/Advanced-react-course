@@ -18,7 +18,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
     },
     plugins: buildPlugins(options), // Плагины
     module: {
-      rules: buildLoaders(), // Для конфигурации лоадеров. Входит обработка любых файлов, за исключением js
+      rules: buildLoaders({ isDev }), // Для конфигурации лоадеров. Входит обработка любых файлов, за исключением js
     },
     resolve: buildResolvers(),
     devtool: isDev ? 'inline-source-map' : undefined, // Сурс мапы для отслеживание консольных ошибок
