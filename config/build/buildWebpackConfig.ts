@@ -20,7 +20,7 @@ export function buildWebpackConfig(options: BuildOptions): webpack.Configuration
     module: {
       rules: buildLoaders({ isDev }), // Для конфигурации лоадеров. Входит обработка любых файлов, за исключением js
     },
-    resolve: buildResolvers(),
+    resolve: buildResolvers({ src: paths.src }),
     devtool: isDev ? 'inline-source-map' : undefined, // Сурс мапы для отслеживание консольных ошибок
     devServer: isDev ? buildDevServer(options) : undefined, // Для запуска локального сервера, который отслеживает изменения в файлах
   };
