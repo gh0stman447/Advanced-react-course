@@ -1,5 +1,8 @@
+import { useTranslation } from 'react-i18next';
+
 export const MainPage = () => {
-  return <div>MainPage13 213123 123 1 1</div>;
+  const { t } = useTranslation();
+  return <div>{t('Главная страница')}</div>;
 };
 
 export default MainPage;
