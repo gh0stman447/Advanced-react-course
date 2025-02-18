@@ -24,7 +24,7 @@ module.exports = {
       {
         code: 120,
         tabWidth: 2,
-        ignoreComments: false,
+        ignoreComments: true,
         ignoreTrailingComments: true,
         ignoreUrls: true,
         ignoreStrings: true,
