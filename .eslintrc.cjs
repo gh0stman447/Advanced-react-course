@@ -51,6 +51,7 @@ module.exports = {
     'no-undef': 'off',
     'import/no-extraneous-dependencies': 'off',
     'i18next/no-literal-string': ['warn', { markupOnly: true }],
+    'react/jsx-wrap-multilines': ['warn', { prop: 'ignore' }],
   },
   globals: {
     __IS_DEV__: true,
