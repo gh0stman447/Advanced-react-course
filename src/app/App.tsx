@@ -7,7 +7,7 @@ import { useTheme } from './providers/ThemeProvider/lib/useTheme';
 import './styles/index.scss';
 
 export const App = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme } = useTheme();
 
   return (
     <div className={classNames('app', {}, [theme])}>
