@@ -50,10 +50,19 @@ module.exports = {
     'no-underscore-dangle': 'off',
     'no-undef': 'off',
     'import/no-extraneous-dependencies': 'off',
-    'i18next/no-literal-string': ['warn', { markupOnly: true }],
+    'i18next/no-literal-string': ['warn', { markupOnly: true, ignoreAttribute: ['data-testid'] }],
     'react/jsx-wrap-multilines': ['warn', { prop: 'ignore' }],
   },
   globals: {
     __IS_DEV__: true,
   },
+  // Для определенного типа файлов помогает переопределить какие-то правила
+  overrides: [
+    {
+      files: ['**/src/**/*.test.{ts,tsx}'],
+      rules: {
+        'i18next/no-literal-string': 'off',
+      },
+    },
+  ],
 };
