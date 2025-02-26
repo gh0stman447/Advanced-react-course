@@ -1,14 +1,12 @@
 import { ResolveOptions } from 'webpack';
-import { BuildPaths } from './types/config';
+import { BuildOptions } from './types/config';
 
-export function buildResolvers({ src: srcPath }: Pick<BuildPaths, 'src'>): ResolveOptions {
-  return {
-    extensions: ['.tsx', '.ts', '.js'],
-    modules: [srcPath, 'node_modules'],
-    preferAbsolute: true,
-    // mainFields: ['main'],
-    alias: {
-      // '@': path.resolve(__dirname, srcPath),
-    },
-  };
+export function buildResolvers(options: BuildOptions): ResolveOptions {
+    return {
+        extensions: ['.tsx', '.ts', '.js'],
+        preferAbsolute: true,
+        modules: [options.paths.src, 'node_modules'],
+        mainFiles: ['index'],
+        alias: {},
+    };
 }

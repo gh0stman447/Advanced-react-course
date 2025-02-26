@@ -1,4 +1,5 @@
 import webpack from 'webpack';
+import path from 'path';
 import { BuildOptions } from './types/config';
 import { buildPlugins } from './buildPlugins';
 import { buildLoaders } from './buildLoaders';
@@ -6,22 +7,22 @@ import { buildResolvers } from './buildResolvers';
 import { buildDevServer } from './buildDevServer';
 
 export function buildWebpackConfig(options: BuildOptions): webpack.Configuration {
-  const { paths, mode, isDev } = options;
+    const { paths, mode, isDev } = options;
 
-  return {
-    mode,
-    entry: paths.entry,
-    output: {
-      filename: '[name].[contenthash].js',
-      path: paths.build,
-      clean: true,
-    },
-    plugins: buildPlugins(options), // Плагины
-    module: {
-      rules: buildLoaders({ isDev }), // Для конфигурации лоадеров. Входит обработка любых файлов, за исключением js
-    },
-    resolve: buildResolvers({ src: paths.src }),
-    devtool: isDev ? 'inline-source-map' : undefined, // Сурс мапы для отслеживание консольных ошибок
-    devServer: isDev ? buildDevServer(options) : undefined, // Для запуска локального сервера, который отслеживает изменения в файлах
-  };
+    return {
+        mode,
+        entry: paths.entry,
+        output: {
+            filename: '[name].[contenthash].js',
+            path: paths.build,
+            clean: true,
+        },
+        plugins: buildPlugins(options),
+        module: {
+            rules: buildLoaders(options),
+        },
+        resolve: buildResolvers(options),
+        devtool: isDev ? 'inline-source-map' : undefined,
+        devServer: isDev ? buildDevServer(options) : undefined,
+    };
 }
